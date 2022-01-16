@@ -2,8 +2,11 @@
 
 # RtlMarqueeView
 RTL marquee text view
+
 It has also ability to hande the speed of moving text
+
 and aslo jump to the specefic position of the text at start
+
 you can loop the marquee text ON or OFF
 
 
