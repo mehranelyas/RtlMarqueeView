@@ -71,7 +71,7 @@ public class RtlMarqueeView extends LinearLayout {
 
     boolean isStarted = false;
 
-    public void setTextTextViews(String text) {
+    public void setText(String text) {
         this.text = text;
         canScrollH = false;
 
@@ -164,7 +164,7 @@ public class RtlMarqueeView extends LinearLayout {
                                     }
                                     if (finalI == (all - 1)) {
                                         if (isLoop) {
-                                            setTextTextViews(text);
+                                            setText(text);
                                             handler.removeCallbacksAndMessages(null);
                                         }
                                     }
@@ -185,7 +185,7 @@ public class RtlMarqueeView extends LinearLayout {
                                     }
                                     if (finalI == (all - 1)) {
                                         if (isLoop) {
-                                            setTextTextViews(text);
+                                            setText(text);
                                         }
                                     }
                                 }
@@ -209,7 +209,7 @@ public class RtlMarqueeView extends LinearLayout {
 
                                     if (finalI == (all - 1)) {
                                         if (isLoop) {
-                                            setTextTextViews(text);
+                                            setText(text);
                                         }
                                     }
                                 }

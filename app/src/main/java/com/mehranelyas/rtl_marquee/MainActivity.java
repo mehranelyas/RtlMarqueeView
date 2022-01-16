@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.mehranelyas.rtlmarquee.RtlMarqueeView;
 
-import java.util.Random;
-
 
 public class MainActivity extends AppCompatActivity {
     RtlMarqueeView rtlMarqueeView;
@@ -17,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        rtlMarqueeView = findViewById(R.id.marqueeView);
+        rtlMarqueeView = findViewById(R.id.rtlMarqueeView);
 //        rtlMarqueeView.setTextTextViews("لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه");
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
@@ -29,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 //                        rtlMarqueeView.setLoopForever(false);
 //                        rtlMarqueeView.setDuration(new Random().nextInt(8000)+3000);
 
-                        rtlMarqueeView.setTextTextViews("کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه");
+                        rtlMarqueeView.setText("کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه");
 
                     }
                 });
