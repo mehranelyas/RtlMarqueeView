@@ -2,11 +2,17 @@
 
 # RtlMarqueeView
 
+https://user-images.githubusercontent.com/18044147/149657683-aa3420ee-da0b-4845-8283-ab0366f39c6c.mp4
+
 * **RTL marquee text view**
 *  **can hande the speed of moving text**
 * **can jump to the specefic position of the text at start**
 * **can loop the marquee text ON or OFF**
 *  **can set the first and last Delay**
+
+
+
+
 
 
 # Installation
