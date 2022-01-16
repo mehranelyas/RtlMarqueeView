@@ -40,7 +40,7 @@ Add it in your root build.gradle at the end of repositories:
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-  ### Step 2. Add this code tho your activity or else...
+  ### Step 2. Add this code to your activity or else...
   
   ```
   rtlMarqueeView = findViewById(R.id.rtlMarqueeView);
