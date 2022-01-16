@@ -1,7 +1,9 @@
+[![](https://jitpack.io/v/mehranelyas/RtlMarqueeView.svg)](https://jitpack.io/#mehranelyas/RtlMarqueeView)
+
 # RtlMarqueeView
 text marquee support RTL 
 
-[![](https://jitpack.io/v/mehranelyas/RtlMarqueeView.svg)](https://jitpack.io/#mehranelyas/RtlMarqueeView)
+
 
 Add it in your root build.gradle at the end of repositories:
 
