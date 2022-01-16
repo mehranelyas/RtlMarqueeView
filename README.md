@@ -1,8 +1,10 @@
 [![](https://jitpack.io/v/mehranelyas/RtlMarqueeView.svg)](https://jitpack.io/#mehranelyas/RtlMarqueeView)
 
 # RtlMarqueeView
-right to left(rtl) marquee text view
-
+RTL marquee text view
+It has also ability to hande the speed of moving text
+and aslo jump to the specefic position of the text at start
+you can loop the marquee text ON or OFF
 
 
 Add it in your root build.gradle at the end of repositories:
