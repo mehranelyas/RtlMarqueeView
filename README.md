@@ -1,7 +1,7 @@
 [![](https://jitpack.io/v/mehranelyas/RtlMarqueeView.svg)](https://jitpack.io/#mehranelyas/RtlMarqueeView)
 
 # RtlMarqueeView
-text marquee support RTL 
+right to left(rtl) marquee text view
 
 
 
