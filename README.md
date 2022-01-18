@@ -1,4 +1,5 @@
 [![](https://jitpack.io/v/mehranelyas/RtlMarqueeView.svg)](https://jitpack.io/#mehranelyas/RtlMarqueeView)
+![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-RtlMarqueeView-green.svg?style=flat )
 
 # RtlMarqueeView
 
