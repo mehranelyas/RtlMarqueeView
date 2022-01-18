@@ -3,7 +3,7 @@
 
 # RtlMarqueeView
 
-https://user-images.githubusercontent.com/18044147/149657683-aa3420ee-da0b-4845-8283-ab0366f39c6c.mp4
+![rtlmarqueeview](https://user-images.githubusercontent.com/18044147/149930812-e7d684e1-4559-42ea-ba31-efc27004583e.gif)
 
 * **RTL marquee text view**
 *  **can hande the speed of moving text**
