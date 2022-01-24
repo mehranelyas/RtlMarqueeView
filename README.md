@@ -65,7 +65,7 @@ Add it in your root build.gradle at the end of repositories:
 rtlMarqueeView.setLoopForever(true or false);
  ```
   ## setDuration
-   if this set the text will animate it your specific time
+   if this set the text will animate in your specific time
  ```
 rtlMarqueeView.setDuration(MILISECOND);
  ```
