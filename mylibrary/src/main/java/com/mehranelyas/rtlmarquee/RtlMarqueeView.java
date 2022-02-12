@@ -1,6 +1,7 @@
 package com.mehranelyas.rtlmarquee;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -24,8 +25,8 @@ public class RtlMarqueeView extends LinearLayout {
     private int duration = 0;
     private int settedDuration = 0;
     private int currentTime = 0;
-    private int firstGap = 1000;
-    private int lastGap = 2000;
+    private int firstGap = 0;
+    private int lastGap = 0;
     private float period = 4;
     private int hScrollWidth = 0;
     private long curentTime = 0;
@@ -35,8 +36,16 @@ public class RtlMarqueeView extends LinearLayout {
     private Context context;
     private boolean isLoop = true;
     private String text;
+    private Typeface typeface = null;
     private boolean isSpeedSet = true;
 
+
+    public void setTypeface(Typeface typeface) {
+        this.typeface = typeface;
+        if (txtAya!=null) {
+            txtAya.setTypeface(typeface);
+        }
+    }
 
     public void setFirstGap(int millisecond) {
         this.firstGap = millisecond;
@@ -150,8 +159,8 @@ public class RtlMarqueeView extends LinearLayout {
                         currentTime = currentTime - firstGap;
                         final int passedPixel = (int) ((currentTime) / period);
                         lastTime = System.currentTimeMillis() + 100;
-                        Log.d(TAG, "onGlobalLayout: currentTime=>" + currentTime + " period=>" + period + " passedPixel=>" + passedPixel + " hTextWidth-passedPixel=>" + (hTextWidth - passedPixel));
                         int all = (((hTextWidth - passedPixel) > 0) ? (hTextWidth - passedPixel) : 1);
+                        Log.d(TAG, "onGlobalLayout: currentTime=>" + currentTime + " period=>" + period + " passedPixel=>" + passedPixel + " hTextWidth-passedPixel=>" + (hTextWidth - passedPixel)+ " all=>"+all);
                         for (int i = 0; i < all; i++) {
                             final int finalI = i + passedPixel;
 
