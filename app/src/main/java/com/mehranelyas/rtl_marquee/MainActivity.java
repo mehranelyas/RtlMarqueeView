@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         rtlMarqueeView.setTypeface(Typeface.DEFAULT_BOLD);
+                        rtlMarqueeView.setDuration(3000);
+                        rtlMarqueeView.setCurrentTime(5000);
 
                         rtlMarqueeView.setText("لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است");
 

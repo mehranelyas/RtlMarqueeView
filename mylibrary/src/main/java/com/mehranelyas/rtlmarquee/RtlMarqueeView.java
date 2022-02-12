@@ -25,11 +25,11 @@ public class RtlMarqueeView extends LinearLayout {
     private int duration = 0;
     private int settedDuration = 0;
     private int currentTime = 0;
-    private int firstGap = 0;
-    private int lastGap = 0;
+    private int firstGap = 1000;
+    private int lastGap = 2000;
     private float period = 4;
     private int hScrollWidth = 0;
-    private long curentTime = 0;
+    private long startTime = 0;
     private long lastTime = 0;
     private Handler handler = new Handler();
     private boolean isEnable = true;
@@ -84,11 +84,13 @@ public class RtlMarqueeView extends LinearLayout {
         this.text = text;
         canScrollH = false;
 
-        duration = (int) (period * text.length());
+        duration = (int) (period * text.length())+firstGap+lastGap;
+        Log.d(TAG, "setText: duration=>"+duration);
+        Log.d(TAG, "setText: text=>"+text.length());
         if (settedDuration > 0) {
             duration = settedDuration;
         }
-        if (lastTime < curentTime) {
+        if (lastTime < startTime) {
             handler.removeCallbacksAndMessages(null);
             Log.d(TAG, "setTextTextViews: removeCallbacksAndMessages");
         }
@@ -140,15 +142,15 @@ public class RtlMarqueeView extends LinearLayout {
 //                Toast.makeText(MainActivity.this, scroll_pos+" px-"+durationAya+" dur", Toast.LENGTH_SHORT).show();
         Log.d(TAG, "hTextWidth: " + hTextWidth);
 
-        curentTime = System.currentTimeMillis();
-        if (lastTime < curentTime) {
+        startTime = System.currentTimeMillis();
+        if (lastTime < startTime) {
             handler.removeCallbacksAndMessages(null);
             Log.d(TAG, "onGlobalLayout: currentTime=>" + currentTime);
 
             if (hTextWidth > hScrollWidth) {
                 hTextWidth = hTextWidth - (hScrollWidth - dp2px(context, 32));
                 if (!isSpeedSet) {
-                    period = ((float) ((duration) - (firstGap + lastGap)) / hTextWidth);
+                    period = ((float) ((duration)) / hTextWidth);
                 }
 
                 Log.d(TAG, "onGlobalLayout: period=>" + period);
@@ -156,11 +158,19 @@ public class RtlMarqueeView extends LinearLayout {
 
                 if (currentTime > 0) {
                     if (currentTime > firstGap) {
+                        int lastGap = this.lastGap;
                         currentTime = currentTime - firstGap;
+                        if (currentTime>duration) {
+                            if ((currentTime - duration)<lastGap) {
+                                lastGap = currentTime - duration;
+                            }
+                        }
                         final int passedPixel = (int) ((currentTime) / period);
                         lastTime = System.currentTimeMillis() + 100;
                         int all = (((hTextWidth - passedPixel) > 0) ? (hTextWidth - passedPixel) : 1);
                         Log.d(TAG, "onGlobalLayout: currentTime=>" + currentTime + " period=>" + period + " passedPixel=>" + passedPixel + " hTextWidth-passedPixel=>" + (hTextWidth - passedPixel)+ " all=>"+all);
+
+                        final int lastGap2 = lastGap;
                         for (int i = 0; i < all; i++) {
                             final int finalI = i + passedPixel;
 
@@ -171,9 +181,15 @@ public class RtlMarqueeView extends LinearLayout {
                                     if (!canScrollH) {
                                         hScrollTxt.scrollTo(finalI, 0);
                                     }
-                                    if (finalI == (all - 1)) {
+                                    if (finalI == (all+passedPixel - 1)) {
                                         if (isLoop) {
-                                            setText(text);
+                                            new Handler().postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    setText(text);
+                                                }
+                                            },lastGap2);
+//                                            setText(text);
                                             handler.removeCallbacksAndMessages(null);
                                         }
                                     }
@@ -194,11 +210,16 @@ public class RtlMarqueeView extends LinearLayout {
                                     }
                                     if (finalI == (all - 1)) {
                                         if (isLoop) {
-                                            setText(text);
+                                            new Handler().postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    setText(text);
+                                                }
+                                            },lastGap);
                                         }
                                     }
                                 }
-                            }, (long) ((period * i) + firstGap - currentTime));
+                            }, (long) ((period * i) + (firstGap - currentTime)));
                         }
                     }
 
@@ -218,13 +239,20 @@ public class RtlMarqueeView extends LinearLayout {
 
                                     if (finalI == (all - 1)) {
                                         if (isLoop) {
-                                            setText(text);
+                                            new Handler().postDelayed(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    setText(text);
+                                                }
+                                            },lastGap);
+
                                         }
                                     }
                                 }
                             }
                         }, (long) ((period * i) + firstGap + (Math.abs(currentTime))));
                     }
+
 
                 }
 
@@ -257,7 +285,7 @@ public class RtlMarqueeView extends LinearLayout {
         init(context);
     }
 
-    public void init(Context context) {
+    private void init(Context context) {
         View v = LayoutInflater.from(context).inflate(R.layout.rtl_marquee, this, true);
         txtAya = v.findViewById(R.id.ayaContex);
         hScrollTxt = v.findViewById(R.id.hScrollTxt);
