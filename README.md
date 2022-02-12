@@ -59,6 +59,11 @@ Add it in your root build.gradle at the end of repositories:
  ```
  rtlMarqueeView.setText(YOUR_TEXT_HERE);
  ```
+ ## setTypeface
+ use your own font
+ ```
+ rtlMarqueeView.setTypeface(YOUR_TYPEFACE);
+ ```
   ## setLoopForever
   set loop forever (Default is true)
  ```
